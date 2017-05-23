@@ -1,0 +1,71 @@
+\newcounter{UseCaseCounter}
+\setcounter{UseCaseCounter}{1}
+\newcounter{AlternativeCounter}
+\setcounter{AlternativeCounter}{1}
+
+\definecolor{colorUC}{RGB}{42,161,152}
+\newcommand{\usecasebox}[1]{\colorbox{colorUC}{\textcolor{white}{#1}}}
+
+\newcommand{\header}[1]{\subsection[(PU\arabic{UseCaseCounter}) #1]{\usecasebox{PU\arabic{UseCaseCounter}} #1}}
+
+\newcommand{\desc}[1]{\subsubsection{Opis przypadku użycia}
+	\noindent #1}
+
+\newcommand{\main}[1]{\subsubsection{Podstawowy przebieg}
+	\noindent #1}
+
+\newcommand{\beginalternatives}{\subsubsection{Przebiegi alternatywne}\noindent}
+\newcommand{\alternative}[2]{\noindent\begin{tabular}{|p{\textwidth}|}
+		\hline
+		\textbf{PU\arabic{UseCaseCounter}.\Alph{AlternativeCounter} #1}\\
+		#2\\
+		\hline
+	\end{tabular}\vspace{0.5em}\stepcounter{AlternativeCounter}}
+
+\newcommand{\diagram}[2]{\vspace{-0.5em}\subsubsection{Diagram przypadku użycia}\noindent
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=#2\textwidth]{diagrams/#1}
+	\end{figure}
+	\FloatBarrier}
+
+\newcommand{\sekwencja}[2]{\vspace{-0.5em}\subsubsection{Diagram sekwencji}\noindent
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=#2\textwidth]{diagrams/#1}
+	\end{figure}
+	\FloatBarrier}
+    
+\newcommand{\klasa}[2]{\vspace{-0.5em}\subsubsection{Diagram klas}\noindent
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=#2\textwidth]{diagrams/#1}
+	\end{figure}
+	\FloatBarrier}
+
+\newcommand{\precond}[1]{\subsubsection{Warunki wstępne}
+	\noindent #1}
+
+\newcommand{\postcond}[1]{\subsubsection{Warunki końcowe}
+	\noindent #1}
+
+\newcommand{\references}[1]{\subsubsection{Referencje}
+	\noindent #1}
+
+\definecolor{xcolorFR}{RGB}{108,113,196}
+\definecolor{xcolorNFR}{RGB}{220,50,47}
+\newcommand{\xfuncreqbox}[1]{\colorbox{xcolorFR}{\textcolor{white}{#1}}}
+\newcommand{\xnonfuncreqbox}[1]{\colorbox{xcolorNFR}{\textcolor{white}{#1}}}
+\newcommand{\rf}[1]{\xfuncreqbox{F#1}}
+\newcommand{\rnf}[1]{\xnonfuncreqbox{NF#1}}
+
+\newcommand{\actors}[1]{\subsubsection{Aktorzy: \textnormal{#1}}}
+\newcommand{\priority}[1]{\subsubsection{Priorytet: \textnormal{#1}}}
+
+
+\definecolor{colorTODO}{RGB}{255,0,255}
+\definecolor{colorCOMMENT}{RGB}{255,120,0}
+\newcommand{\todo}{\colorbox{colorTODO}{\textcolor{white}{\textbf{TODO}}}}
+\newcommand{\comment}[1]{\textcolor{colorCOMMENT}{#1}}
+
+\newenvironment{usecase}{\setcounter{AlternativeCounter}{1}\header}{\stepcounter{UseCaseCounter}}

@@ -1,0 +1,159 @@
+\documentclass[12pt, oneside, final]{report}
+\usepackage{geometry}
+\geometry{a4paper, left=20mm, right=20mm, top=25mm, bottom=25mm}
+\usepackage[utf8]{inputenc}
+\usepackage{t1enc}
+\usepackage[MeX]{polski}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{indentfirst}
+\usepackage{pdfpages}
+\usepackage{xcolor}
+\usepackage{placeins} % provides \FloatBarrier
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,arrows,calc,decorations.markings,shadows}
+
+% Czcionka
+\usepackage{charter}
+
+% Pojedyncze elementy na górze stron
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+% Styl tytułowania rozdziałów:
+\usepackage{titlesec}
+%\titleformat{\chapter}{\normalfont\huge}{\bf\thechapter.}{20pt}{\huge\bf}
+% Styl tytułowania rozdziałów:
+\titleformat{\chapter}[display] 
+{\centering\normalfont\huge\bfseries}{\centering\chaptertitlename\ \thechapter.}{0.5em}{}
+\titlespacing{\chapter}{0em}{0em}{2em}
+
+% dodatkowe kropki po numerach rozdziałów, sekcji itd
+\usepackage{titlesec}
+\titlelabel{\thetitle.\quad}
+
+% Dodatkowe odstępy w tabelach (do UseCaseow)
+\usepackage{array}
+\setlength\extrarowheight{4pt}
+
+
+% Szablon do Use Caseów
+\input{templates/t_use_case}
+% Szablon do wymagan funkc. i niefunkc.
+\input{templates/t_func_nonfunc_req}
+% Szablon do diagramów sekwencji
+\input{templates/t_sequence}
+% Szablon do diagramów klas
+\input{templates/t_class}
+% Szablon do diagramów komponentów
+\input{templates/t_component}
+
+\begin{document}
+
+% Title page
+\begin{titlepage}
+\centering
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{logo.pdf}
+\end{figure}
+\vspace*{100pt}
+\LARGE{Projekt APSI}\\
+\vspace{30pt}
+\textsc{\Huge{System Grapics}}\\
+\vspace{120pt}
+\Large{Mikołaj Gapsa}\\
+\Large{Łukasz Kilaszewski}\\
+\Large{Vitali Kozak}\\
+\Large{Piotr Rosłaniec}\\
+\vfill
+\large{Warszawa, 2017}
+\end{titlepage}
+
+\thispagestyle{empty}
+\tableofcontents
+\cleardoublepage
+
+\chapter{Wprowadzenie}
+\section{Opis projektu}
+Projekt Grapics realizuje system informatyczny służący do zarządzania procesami biznesowymi w firmie realizującej zamówienia B2B na dobra intelektualne, w szczególności grafiki i fotografie.
+
+\section{Procesy biznesowe}
+Ze względu na zróżnicowane zadania jakie realizuje wykonawca (odbiorca systemu) proces realizacja zadania nie jest dobrze ustrukturyzowany. Utrudnia to monitorowania i nadzorowanie zadań, a także ich synchronizację między sobą w przypadkach, kiedy istnieją między nimi zależności.
+
+Zmienność wymagań i ich niedoprecyzowanie sprawia, że konieczna jest ciągła komunikacja z klientem i pozyskiwanie informacji zwrotnej po wprowadzeniu znaczących zmian. Efektem każdej zmiany jest wydanie artefaktu w pewnej wersji. Artefakty wymagają nie tylko akceptacji klienta, ale również konkretnych osób z zespołu i przełożonego. 
+
+Śledzenie i wersjonowanie artefaktów staje się konieczne w projektach, które przechodzą wiele iteracji nierzadko przy udziale podwykonawców. Artefakty mogą się znajdować w wielu różnych lokalizacjach, po stronie klienta, wykonawcy lub podwykonawców.
+
+\section{Opis wprowadzonych pojęć}
+W ramach opisu projektu wprowadzono następujące pojęcia:
+\begin{itemize}
+	\item \textit{Zgłoszenie} -- jednostka pracy o znaczeniu biznesowym,
+	\item \textit{Artefakt} -- produkt realizacji \textit{Zgłoszenia},
+	\item \textit{Projekt} -- zbiór \textit{Zgłoszeń},
+	\item \textit{Repozytorium} -- lokalizacja przechowywująca \textit{Artefakty}.
+\end{itemize}
+
+\section{Aktorzy}
+W systemie zidentyfikowano następujących aktorów:
+\begin{itemize}
+	\item \textit{Administrator} -- jednostka pracy o znaczeniu biznesowym,
+	\item \textit{Użytkownik} -- podstawowy aktor, jego rola biznesowa jest określona za pomocą zestawu uprawnień dla poszczególnych projektów,
+	\item \textit{Twórca projektu} (\texttt{<<extends>>} \textit{Użytkownik}) -- użytkownik sprawujący odpowiedzialność nad projektem,
+	\item \textit{Twórca zgłoszenia} (\texttt{<<extends>>} \textit{Użytkownik}) -- użytkownik sprawujący odpowiedzialność nad zgłoszeniem,
+	\item \textit{Osoba Odpowiedzialna} (\texttt{<<extends>>} \textit{Użytkownik}) -- użytkownik oddelegowany do zrealizowania zgłoszenia,
+	\item \textit{Gość} -- osoba nie posiadająca dostępu do systemu.
+\end{itemize}
+
+\section{Moduły}
+System podzielony jest na następujące moduły:
+\begin{itemize}
+	\item Moduł uwierzytelniania
+	\item Moduł administracyjny
+	\item Moduł główny (obsługi projektów)	
+\end{itemize}
+\subsection{Moduł uwierzytelniania}
+Moduł odpowiedzialny za uwierztyelnianie użytkowników. Jego główne cele to umożliwienie gościom zakładanie kont oraz pozwolić użytkownikom zalogować się.
+\subsection{Moduł administracyjny}
+Moduł odpowiedzialny za wszelkie prace wykonywane przez Administratora Systemu. Uwzględniono tutaj wszystkie możliwości jakie można znaleźć w panelu Administratora.
+\subsection{Moduł główny}
+Opis \ldots \todo
+
+\chapter{Specyfikacja sprzętu i oprogramowania podstawowego}
+\todo
+\chapter{Specyfikacja technologii}
+\todo
+\chapter{Przypadki użycia}
+\section{Moduł uwierzytelniania}
+\input{use_cases_module1}
+\section{Moduł administracyjny}
+\input{use_cases_module2}
+\section{Moduł główny}
+\input{use_cases_module3}
+
+\chapter{Wymagania funkcjonalne}
+W niniejszym rozdziale przedstawione zostały wymagania funkcjonalne, które zdefiniowano dla poszczególnych modułów systemu. Priorytet oraz złożoność realizacji każdego z wymagań wyrażone zostały przy użyciu dziesięciostopniowej skali liniowej (1--10). Liczba 10 odpowiada najwyższemu priorytetowi i największej złożoności, natomiast liczba 1 - wartościom najniższym.
+\section{Moduł uwierzytelniania}
+\input{func_reqs_module1}
+\section{Moduł administracyjny}
+\input{func_reqs_module2}
+\section{Moduł główny}
+\input{func_reqs_module3}
+
+\chapter{Wymagania niefunkcjonalne}
+\input{nonfunc_reqs}
+
+\chapter{Diagramy sekwencji}
+\input{sequence_diagrams}
+
+\chapter{Diagramy Klas}
+\input{class_diagrams}
+
+\chapter{Diagram komponentów}
+\input{component_diagrams}
+
+
+\end{document}

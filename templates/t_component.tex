@@ -1,0 +1,13 @@
+\newcounter{ComponentCounter}
+\setcounter{ComponentCounter}{1}
+
+\newcommand{\headerC}[1]{\subsection{#1}}
+
+\newcommand{\diagramC}[2]{\vspace{-0.5em}\subsubsection{}\noindent
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=#2\textwidth]{diagrams/#1}
+	\end{figure}
+	\FloatBarrier}
+
+\newenvironment{component}{\headerSQ}{\stepcounter{ComponentCounter}}

@@ -1,0 +1,397 @@
+\begin{usecase}{Use Case name}
+	% Opis przypadku użycia
+	\desc{Use Case description}
+	% Priorytet
+	\priority{3}
+	% Aktorzy
+	\actors{Aktor1, Aktor2, Aktor3}
+	% Przebieg główny
+	\main{Main flow description}
+	\begin{enumerate}
+		\item Action 1
+		\item Action 2
+		\item Action 3
+	\end{enumerate}
+	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Alternative flow 1}{Actions \ldots}
+	\alternative{Alternative flow 2}{Actions \ldots}
+	\alternative{Alternative flow 3}{Actions \ldots}
+	% Diagram
+	\diagram{todo.pdf}{0.6} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	\sekwencja{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+    % Diagram sekwencji
+	\klasa{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{\todo}
+	% Post-conditions
+	\postcond{\todo}
+	% Referencje
+	\references{\rf{1} \rf{2} \rnf{1} \rnf{2}}
+\end{usecase}
+% może nie usuwajcie tego szablonu z góry, będzie można sobie kopiować
+
+% DONE
+\begin{usecase}{Przeglądanie Projektów}
+\label{przegladanie_projektow}
+	% Opis przypadku użycia
+	\desc{Użytkownik przegląda Projekty, w których funkcjonuje w roli Członka Projektu}
+	% Przebieg główny
+	\begin{enumerate}
+      \item Użytkownik wchodzi w sekcję "moje projekty"
+      \item Użytkownik zaznacza opcję filtrowania projektów, w których jest członkiem
+      \item System wyświetla listę projektów, w których Użytkownik funkcjonuje w roli Członka Projektu.
+	\end{enumerate}
+	% Diagram
+	\diagram{przegladanie_projektow.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Użytkownik jest zalogowany (\ref{logowanie})}
+\end{usecase}
+
+% DONE
+\begin{usecase}{Tworzenie Projektu}
+\label{tworzenie_projektu}
+	% Opis przypadku użycia
+	\desc{Użytkownik tworzy nowy Projekt}
+	% Przebieg główny
+	\begin{enumerate}
+    \item Użytkownik przegląda istniejące Projekty (\ref{przegladanie_projektow})
+    \item Użytkownik wybiera opcję  “Utwórz nowy projekt”
+    \item Użytkownik wypełnia formularz
+    \item Użytkownik zatwierdza utworzenie nowego projektu.
+	\end{enumerate}
+	% Diagram
+	\diagram{tworzenie_projektu.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Użytkownik jest zalogowany}
+	% Post-conditions
+	\postcond{Został utworzony nowy Projekt, a Użytkownik, który go stworzył, zostaje Twórcą tego Projektu}
+\end{usecase}
+
+% DONE
+\begin{usecase}{Edycja Projektu}
+	% Opis przypadku użycia
+	\desc{Twórca Projektu edytuje swój Projekt}
+	% Przebieg główny
+	\begin{enumerate}
+    \item Twórca Projektu przegląda istniejące Projekty (\ref{przegladanie_projektow})
+    \item Twórca Projektu wybiera Projekt
+    \item Twórca Projektu dokonuje zmian w formularzu
+    \item Twórca Projektu zatwierdza zmiany
+	\end{enumerate}
+	% Diagram
+	\diagram{edycja_projektu.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Użytkownik jest zalogowany (\ref{logowanie}) i jest Twórcą edytowanego Projektu (\ref{tworzenie_projektu})}
+	% Post-conditions
+	\postcond{Właściwości Projektu zostały zmienione}
+\end{usecase}
+
+
+% DONE
+\begin{usecase}{Zamknięcie projektu}
+	% Opis przypadku użycia
+	\desc{Twórca Projektu zgłasza do zamknięcia swój Projekt}
+	% Przebieg główny
+	\begin{enumerate}
+	\item Twórca Projektu przegląda istniejące Projekty (\ref{przegladanie_projektow})
+    \item Twórca Projektu wybiera Projekt
+    \item Twórca Projektu wybiera Zgłoszenie
+    \item Twórca Projektu wydaje polecenie zamknięcia projektu
+	\end{enumerate}
+	% Diagram
+	\diagram{zamkniecie_projektu.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Użytkownik jest zalogowany (\ref{logowanie}) i jest Twórcą zamykanego Projektu (\ref{tworzenie_projektu})}
+	% Post-conditions
+	\postcond{Projekt został zamknięty, Użytkownik nie jest już Twórcą Projektu}
+\end{usecase}
+
+
+
+% DONE
+\begin{usecase}{Tworzenie Zgłoszenia}
+\label{tworzenie_zgloszenia}
+	% Opis przypadku użycia
+	\desc{Opisuje proces, w którym Użytkownik będący Członkiem Projektu dodaje nowe Zgłoszenie do Projektu}
+	% Przebieg główny
+	\begin{enumerate}
+      \item Członek Projektu przegląda istniejące Projekty (\ref{przegladanie_projektow})
+      \item Członek Projektu wybiera odpowiedni Projekt
+      \item Członek Projektu uzupełnia szczegóły nowego Zgłoszenia
+      \item Członek Projektu zatwierdza powstanie nowego Zgłoszenia
+	\end{enumerate}
+	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Wybranie Osoby Odpowiedzialnej za Zgłoszenie}{Członek Projektu wybiera Osobę Odpowiedzialną za utworzone zgłoszenie spośród Członków Projektu (\ref{wyznaczenie_osoby_odpowiedzialnej})}
+	% Diagram
+	\diagram{tworzenie_zgloszenia.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Użytkownik (Członek Projektu) jest zalogowany (\ref{logowanie}) i jest członkiem przynajmniej jednego Projektu}
+	% Post-conditions
+	\postcond{Powstało nowe Zgłoszenie w Projekcie, Członek Projektu staje się Twórca Zgłoszenia dla utworzonego Zgłoszenia}
+\end{usecase}
+
+% DONE
+\begin{usecase}{Zamknięcie Zgłoszenia}
+	% Opis przypadku użycia
+	\desc{Twórca Zgłoszenia zamyka swoje Zgłoszenie}
+	\begin{enumerate}
+    \item Twórca Zgłoszenia przegląda istniejące Projekty (\ref{przegladanie_projektow})
+    \item Twórca Zgłoszenia wybiera Projekt
+    \item Twórca Zgłoszenia wybiera Zgłoszenie
+    \item Twórca Zgłoszenia wydaje polecenie zamknięcia zgłoszenia
+    \end{enumerate}
+	% Diagram
+	\diagram{zamkniecie_zgloszenia.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+    \precond{Użytkownik jest zalogowany (\ref{logowanie}) i jest Twórcą zamykanego Zgłoszenia (\ref{tworzenie_zgloszenia})}
+	% Post-conditions
+	\postcond{Zgłoszenie zostało zamknięte, Użytkownik nie jest już Twórcą Zgłoszenia}
+\end{usecase}
+
+% DONE
+\begin{usecase}{Zmiana widoczności Zgłoszenia}
+	% Opis przypadku użycia
+	\desc{Twórca Zgłoszenia zmienia widoczność swojego Zgłoszenia}
+    % Przebieg główny
+	\begin{enumerate}
+    \item Twórca Zgłoszenia przegląda istniejące Projekty (\ref{przegladanie_projektow})
+    \item Twórca Zgłoszenia wybiera Projekt
+    \item Twórca Zgłoszenia wybiera Zgłoszenie
+    \item Twórca Zgłoszenia wydaje polecenia ukrycia/odkrycia Zgłoszenia
+	\end{enumerate}
+	% Diagram
+	\diagram{zmiana_widocznosci_zgloszenia.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Użytkownik jest zalogowany (\ref{logowanie}) i jest Twórcą edytowanego Zgłoszenia (\ref{tworzenie_zgloszenia})}
+	% Post-conditions
+	\postcond{Widoczność Zgłoszenia została zmieniona}
+\end{usecase}
+
+% DONE
+\begin{usecase}{Edycja Zgłoszenia}
+\label{edycja_zgloszenia}
+	% Opis przypadku użycia
+	\desc{Twórca Zgłoszenia edytuje podstawowe informacje o Zgłoszeniu}
+    % Przebieg główny
+	\begin{enumerate}
+	\item Twórca Zgłoszenia przegląda istniejące Projekty (\ref{przegladanie_projektow})
+    \item Twórca Zgłoszenia wybiera Projekt
+    \item Twórca Zgłoszenia wybiera Zgłoszenie
+    \item Twórca Zgłoszenia wydaje polecenie edycji Zgłoszenia
+    \item Twórca Zgłoszenia edytuje formularz
+    \item Twórca Zgłoszenia zatwierdza zmiany
+	\end{enumerate}
+	% Diagram
+	\diagram{edycja_zgloszenia.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Użytkownik jest zalogowany (\ref{logowanie}), należy do przynajmniej jednego Projektu i jest Twórcą przynajmniej jednego Zgłoszenia (\ref{tworzenie_zgloszenia})}
+	% Post-conditions
+	\postcond{Właściwości Zgłoszenia zostały zmienione}
+\end{usecase}
+
+% DONE
+\begin{usecase}{Wyznaczenie Osoby Odpowiedzialnej}
+\label{wyznaczenie_osoby_odpowiedzialnej}
+	% Opis przypadku użycia
+	\desc{Twórca Zgłoszenia wyznacza Użytkownika jako Odbiorcę Zgłoszenia dla danego Zgłoszenia}
+	% Przebieg główny
+	\begin{enumerate}
+    \item Twórca Zgłoszenia przegląda istniejące Projekty (\ref{przegladanie_projektow})
+  	\item Twórca Zgłoszenia wybiera Projekt
+  	\item Twórca Zgłoszenia wybiera Zgłoszenie
+  	\item Twórca Zgłoszenia wydaje polecenie edycji Zgłoszenia (\ref{edycja_zgloszenia})
+  	\item Twórca Zgłoszenia wybiera z listy Użytkowników Osobę Odpowiedzialną
+  	\item Twórca Zgłoszenia zatwierdza zmiany
+	\end{enumerate}
+	% Diagram
+	\diagram{wyznaczenie_osoby_odpowiedzialnej.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Użytkownik jest zalogowany (\ref{logowanie}), należy do przynajmniej jednego Projektu i jest Twórcą przynajmniej jednego Zgłoszenia (\ref{tworzenie_zgloszenia})}
+	% Post-conditions
+	\postcond{Do zgłoszenia została przypisana osoba odpowiedzialna}
+    
+\end{usecase}
+
+% DONE
+\begin{usecase}{Edycja Grafu}
+	% Opis przypadku użycia
+	\desc{Twórca Projektu planuje kolejne etapy Projektu w formie Zgłoszeń, przechowywanych w postaci Grafu}
+	% Przebieg główny
+	\begin{enumerate}
+    \item Twórca Projektu przegląda istniejące Projekty (\ref{przegladanie_projektow})
+    \item Twórca Projektu wybiera Projekt
+    \item Twórca Projektu wybiera istniejące Zgłoszenie
+    \item Twórca Projektu wyznacza rodzica Zgłoszenia lub usuwa istniejące dzieci
+	\end{enumerate}
+	% Przebiegi alternatywne
+	% Diagram
+	\diagram{tworzenie_grafu.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Użytkownik jest zalogowany (\ref{logowanie})  i jest Twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
+	% Post-conditions
+	\postcond{Struktura Grafu została zmieniona}
+\end{usecase}
+
+\begin{usecase}{Ustawienie szczegółowych uprawnień}
+	% Opis przypadku użycia
+	\desc{Twórca Projektu ustawia szczegółowe uprawnienia innym Członkom Projektu}
+	% Przebieg główny
+	\begin{enumerate}
+    \item Użytkownik loguje się
+    \item Użytkownik wchodzi w sekcję ‘swoje projekty’
+    \item Użytkownik wybiera odpowiedni projekt
+    \item Użytkownik wybiera opcję ‘zarządzaj Członkami Projektu’
+    \item Użytkownik wybiera odpowiedniego Członka Projektu
+    \item Użytkownik zmienia uprawnienia wybranego Członka Projektu
+	\end{enumerate}
+	% Przebiegi alternatywne
+	% Diagram
+	\diagram{ustawienia_szczegolowych_uprawnien.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Użytkownik jest zalogowany (\ref{logowanie})  i jest Twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
+	% Post-conditions
+	\postcond{Uprawnienia co najmniej jednego użytkownika zostały zmienione}
+\end{usecase}
+
+\begin{usecase}{Tworzenie projektu z wieloma zgłoszeniami}
+	% Opis przypadku użycia
+	\desc{Użytkownik tworzy projekty zawierające wiele Zgłoszeń}
+	% Przebieg główny
+	\begin{enumerate}
+    \item Użytkownik loguje się
+    \item Użytkownik wybiera opcję ‘utwórz nowy Projekt’
+    \item Użytkownik wypełnia odpowiednia informacje o Nowym Projekcie
+    \item Użytkownik dodaje innych użytkowników jako Członków Projektu
+    \item Użytkownik tworzy Zgłoszenia w danym projekcie.
+	\end{enumerate}
+	% Przebiegi alternatywne
+	% Diagram
+	\diagram{tworzenie_projektu_z_wieloma_zgloszeniami.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Jest Twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
+	% Post-conditions
+	\postcond{Powstanie co najmniej jednego zgłoszenia}
+\end{usecase}
+
+\begin{usecase}{Udział informacji zwrotnej}
+	% Opis przypadku użycia
+	\desc{Odbiorca Zgłoszenia udziela informacji zwrotnej Osobie Odpowiedzialnej przez zmianę statusu Zgłoszenia.}
+	% Przebieg główny
+	\begin{enumerate}
+    \item Odbiorca Zgłoszenia  loguje się
+    \item Odbiorca Zgłoszenia wchodzi w sekcję "moje projekty"
+    \item Odbiorca Zgłoszenia wybiera Projekt
+    \item Odbiorca Zgłoszenia wybiera Zgłoszenie
+    \item Odbiorca Zgłoszenia edytuje Zgłoszenie
+    \item Odbiorca Zgłoszenia ustawia odpowiedni status Zgłoszenia i zamieszcza komentarz
+    \item Odbiorca Zgłoszenia zatwierdza zmiany
+	\end{enumerate}
+	% Przebiegi alternatywne
+	% Diagram
+	\diagram{udzial_informacji_zwrotnej.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Odbiorca Zgłoszenia jest twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
+	% Post-conditions
+	\postcond{Zmiana statusu}
+\end{usecase}
+
+\begin{usecase}{Aktualizacja zasobów}
+	% Opis przypadku użycia
+	\desc{Odbiorca Zgłoszenia aktualizuje Zasoby Zgłoszenia.}
+	% Przebieg główny
+	\begin{enumerate}
+    \item Odbiorca Zgłoszenia wchodzi na stronę
+    \item Ta osoba loguje się jako root
+    \item Próbuje zmienić “propozycję”
+    \item Jeżeli taka jest to wraca do punktu 3
+    \item Zmiana się powiodła
+	\end{enumerate}
+	% Przebiegi alternatywne
+	% Diagram
+	\diagram{aktualizacja_zasobow.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Odbiorca Zgłoszenia jest twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
+	% Post-conditions
+	\postcond{Zmiana zasobów zgłoszenia}
+\end{usecase}
+
+\begin{usecase}{Pobieranie załączników}
+	% Opis przypadku użycia
+	\desc{Twórca/Odbiorca Zgłoszenia/Odbiorca pobiera załączniki dodane do Zgłoszeń.
+}
+	% Przebieg główny
+	\begin{enumerate}
+    \item Osoba wchodzi na stronę
+    \item Loguje się podając Imię Nazwisko i nr. PESEL
+    \item Osoba wyszukuje zgłoszenie
+    \item Pobiera załącznik.
+    \item Jeżeli to jest Twórca projektu, jest opcja pobrać wszystkie załączniki
+	\end{enumerate}
+	% Przebiegi alternatywne
+	% Diagram
+	\diagram{pobieranie_zalacznikow.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Odbiorca Zgłoszenia jest twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
+	% Post-conditions
+	\postcond{Zmiana zasobów zgłoszenia}
+\end{usecase}
+
+\begin{usecase}{Przeszukiwanie zgłoszeń}
+	% Opis przypadku użycia
+	\desc{Członek Projektu przeszukuje Zgłoszenia w Projekcie.}
+	% Przebieg główny
+	\begin{enumerate}
+    \item Użytkownik loguje się
+    \item W polu “Znajdź zgłoszenie” wpisuje kluczowe słowa
+    \item Przeglądarka wyświetla znalezione zgłoszenia
+    \item Jeżeli nie znalazł nic wyświetla komunikat “Takich zgłoszeń nie ma”
+	\end{enumerate}
+	% Przebiegi alternatywne
+	% Diagram
+	\diagram{przeszukiwanie_zgloszen.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Odbiorca Zgłoszenia jest twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
+	% Post-conditions
+	\postcond{Uzyskanie odpowiednich zgłoszeń lub informacji że ich brak}
+\end{usecase}
+
+\begin{usecase}{Wysyłanie informacji o zamknięciu projektu, "Odbiorca-Twórca"}
+	% Opis przypadku użycia
+	\desc{Odbiorca Zgłoszenia wysyłam Twórcy Zgłoszenia informacje, że Zgłoszenie jest do zamknięcia. (ja bym dał: Odbiorca Zgłoszenia za Zgłoszenie zmienia jego status.)}
+	% Przebieg główny
+	\begin{enumerate}
+    \item Odbiorca Zgłoszenia loguje się do systemu
+    \item Odbiorca Zgłoszenia wchodzi do sekcji zgłoszenia
+    \item W tym zgłoszenie jest podany adres @mail
+    \item Odbiorca Zgłoszenia wysyła mail
+	\end{enumerate}
+	% Przebiegi alternatywne
+	% Diagram
+	\diagram{odbiorca_tworca.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Odbiorca i twórca muszą należeć do co najmniej jednego projektu.}
+	% Post-conditions
+	\postcond{Uzyskanie odpowiednich zgłoszeń lub informacji, że jest ich brak}
+\end{usecase}
+
+\begin{usecase}{Wysłanie informacji o zamknięciu projektu, "Użytkownik-Twórca"}
+	% Opis przypadku użycia
+	\desc{Członek Projektu wysyła Twórcy Projektu informacje, że  projekt jest do zamknięcia.}
+	% Przebieg główny
+	\begin{enumerate}
+    \item Członek projektu wchodzi na stronę
+    \item Podaje Imię, Nazwisko i identyfikator
+    \item Naciska na przycisk “Projekt jest do zamknięcia”
+    \item Wiadomość przychodzi do Twórcy projektu
+	\end{enumerate}
+	% Przebiegi alternatywne
+	% Diagram
+	\diagram{uzytkownik_tworca.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Odbiorca i twórca muszą należeć do co najmniej jednego projektu.}
+	% Post-conditions
+	\postcond{Uzyskanie odpowiednich zgłoszeń lub informacji że jest ich brak}
+\end{usecase}

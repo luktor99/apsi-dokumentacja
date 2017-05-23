@@ -1,0 +1,261 @@
+\begin{usecase}{Zarządzanie Systemem}
+	% Opis przypadku użycia
+	\desc{Ten ogólny przypadek użycia opisuje jak Administrator może zarządzać Systemem.}
+    % Priorytet
+	\priority{9}
+	% Aktorzy
+	\actors{Administrator}
+	% Przebieg główny
+	\main{Ten przypadek użycia zaczyna się gdy Administrator wejdzie do panelu Administratora}
+	\begin{enumerate}
+		\item Administrator robi backup danych
+		\item Administrator wykonuje przywracanie systemu
+		\item Administrator przegląda logi systemu
+        \item Administrator przeprwowadza rekonfigurację systemu
+        \item Administrator zarządza kontem Użytkownika
+	\end{enumerate}
+	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Administrator próbował wykonać przywracanie systemu w niedozwolonym momencie}{ System nie pozwoli Administratorowi wykonać takiej opracji w innym momencie niż ten ściśle określony w kontrakcie}
+	%\alternative{Dodatkowa pozycja}{W ten sposób można dodawać kolejne przebiegi alternatywne \ldots}
+	% Diagram
+	\diagram{zarzadzanie_systemem.pdf}{1} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Administrator jest zalogowany w systemie. }
+	% Post-conditions
+	\postcond{Jeśli przypadek użycia został pomyślnie zrealizowany, stan danego konta użytkownika został zmieniony.}
+    % Referencje
+	\references{\rf{5} \rf{6} \rf{7} \rf{8} \rf{9} \rf{10} \rnf{2} \rnf{4} \rnf{5}}
+\end{usecase}
+
+\begin{usecase}{Zarządzanie kontem Użytkownika}
+	% Opis przypadku użycia
+	\desc{Ten ogólny przypadek użycia opisuje jak Administrator zarządza kontem użytkownika.}
+    % Priorytet
+	\priority{9}
+	% Aktorzy
+	\actors{Administrator}
+	% Przebieg główny
+	\main{Ten przypadek użycia zaczyna się gdy Administrator wejdzie do panelu Administratora}
+	\begin{enumerate}
+		\item Administrator Zatwierdza konto nowo-zarejestrowanego Użytkownika
+		\item Administrator zmienia uprawnienia użytkownika
+		\item Administrator usuwa konto użytkownika
+	\end{enumerate}
+	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Administrator próbował zarządać kontem innego Administratora}{ Jeśli Administrator próbował zarządzać kontem innego Administratora, System odrzuca zmiany co kończy ten przypadek użycia}
+	%\alternative{Dodatkowa pozycja}{W ten sposób można dodawać kolejne przebiegi alternatywne \ldots}
+	% Diagram
+	\diagram{zarzadzanie_kontem.pdf}{1} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Administrator jest zalogowany w Systemie. }
+	% Post-conditions
+	\postcond{Jeśli przypadek użycia został pomyślnie zrealizowany, stan danego konta użytkownika został zmieniony.}
+    % Referencje
+	\references{\rf{5} \rf{6} \rf{7}}
+\end{usecase}
+
+\begin{usecase}{Zatwierdzanie konta}
+	% Opis przypadku użycia
+	\desc{Ten przypadek użycia opisuje proces zatwierdzania kont nowo-zarejestrowanych użytkowników w systemie Grapics.}
+    % Priorytet
+	\priority{10}
+	% Aktorzy
+	\actors{Administrator}
+	% Przebieg główny
+	\main{Ten przypadek użycia zaczyna się gdy Administrator otrzymał powiadomienie o nowo-utworzonych kontach się w systemie.}
+	\begin{enumerate}
+		\item System wyświetla nowych użytkowników w panelu Administratorskim
+        \item Administrator wybiera jedno z kont
+		\item Administrator weryfikuje i zatwierdza wybrane konto
+	\end{enumerate}
+	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Osoba nieupowazniona próbowała założyć konto}{Jeśli osoba nieupoważniona, to znaczy taka, która nie jest klientem, próbowała założyć konto w systemie, konto zostaje odrzucone przez administratora}
+	%\alternative{Dodatkowa pozycja}{W ten sposób można dodawać kolejne przebiegi alternatywne \ldots}
+	% Diagram
+	\diagram{zatwierdzanie_konta.pdf}{1} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+    % Diagram sekwencji
+	\sekwencja{zatwierdzenie_konta_sekwencja.pdf}{1}
+	% Pre-conditions
+	\precond{Administrator jest zalogowany w Systemie oraz istnieją niezatwierdzone konta w Systemie.}
+	% Post-conditions
+	\postcond{Jeśli przypadek użycia został pomyślnie zrealizowany, konto jest potwierdzone przez Administratora w Systemie i może on posłużyć do zalogowania się. W przeciwnej sytuacji stan systemu pozostaje niezmieniony.}
+    % Referencje
+	\references{\rf{5}}
+\end{usecase}
+
+\begin{usecase}{Usuwanie konta}
+	% Opis przypadku użycia
+	\desc{Ten przypadek użycia opisuje proces usuwania kont użytkowników w systemie Grapics.}
+    % Priorytet
+	\priority{8}
+	% Aktorzy
+	\actors{Administrator}
+	% Przebieg główny
+	\main{Ten przypadek użycia zaczyna się gdy Administrator otrzymał powiadomienie o wygaścięciu ważności konta w Systemie Grapics.}
+	\begin{enumerate}
+		\item System wyświetla użytkowników w panelu Administratorskim
+        \item Administrator wybiera jedno z kont
+		\item Administrator weryfikuje i usuwa wybrane konto
+	\end{enumerate}
+	% Przebiegi alternatywne
+	%\alternative{Dodatkowa pozycja}{W ten sposób można dodawać kolejne przebiegi alternatywne \ldots}
+	% Diagram
+	\diagram{usuwanie_konta.pdf}{1} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+    % Diagram sekwencji
+	\sekwencja{usuwanie_konta_sekwencja.pdf}{1}
+	% Pre-conditions
+	\precond{Administrator jest zalogowany w Systemie oraz dostał powiadomienie o wygaśnięciu wazności konta użytkownika.}
+	% Post-conditions
+	\postcond{Jeśli przypadek użycia został pomyślnie zrealizowany, konto jest usunięte przez Administratora w Systemie i nie może ono posłużyć do zalogowania się. W przeciwnej sytuacji stan systemu pozostaje niezmieniony.}
+    % Referencje
+	\references{\rf{7}}
+\end{usecase}
+
+\begin{usecase}{Zmiana uprawnień}
+	% Opis przypadku użycia
+	\desc{Ten przypadek użycia opisuje proces zmieniania uprawnież kont użytkowników w systemie Grapics.}
+    % Priorytet
+	\priority{8}
+	% Aktorzy
+	\actors{Administrator}
+	% Przebieg główny
+	\main{Ten przypadek użycia zaczyna się gdy Administrator otrzymał powiadomienie o potrzebie zmiany uprawnień konta w Systemie Grapics.}
+	\begin{enumerate}
+		\item System wyświetla użytkowników w panelu Administratorskim
+        \item Administrator wybiera jedno z kont
+		\item Administrator weryfikuje i zmienia uprawnienia wybranengo konta
+	\end{enumerate}
+	% Przebiegi alternatywne
+	%\alternative{Dodatkowa pozycja}{W ten sposób można dodawać kolejne przebiegi alternatywne \ldots}
+	% Diagram
+	\diagram{zmiana_uprawnien.pdf}{1} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+    % Diagram sekwencji
+	\sekwencja{zmiana_uprawnien_sekwencja.pdf}{1}
+	% Pre-conditions
+	\precond{Administrator jest zalogowany w Systemie oraz dostał powiadomienie o potrzebie zmiany uprawnień danego konta użytkownika.}
+	% Post-conditions
+	\postcond{Jeśli przypadek użycia został pomyślnie zrealizowany, uprawnienia danego konta zostały zmienione. W przeciwnej sytuacji stan systemu pozostaje niezmieniony.}
+    % Referencje
+	\references{\rf{6}}
+\end{usecase}
+
+\begin{usecase}{Backup danych}
+	% Opis przypadku użycia
+	\desc{Ten przypadek użycia opisuje proces robienia backupu danych przez Administratora.}
+    % Priorytet
+	\priority{10}
+	% Aktorzy
+	\actors{Administrator}
+	% Przebieg główny
+	\main{Ten przypadek użycia zaczyna się gdy Administrator otrzymał powiadomienie o potrzebie zrobienia backupu danych w Systemie Grapics.}
+	\begin{enumerate}
+		\item Administrator wybiera opcję "Backup danych" w panelu Administratorskim
+        \item Administrator zaznacza odpowiednie opcje
+		\item Administrator czeka aż proces dobiegnie końca
+	\end{enumerate}
+	% Przebiegi alternatywne
+	%\alternative{Dodatkowa pozycja}{W ten sposób można dodawać kolejne przebiegi alternatywne \ldots}
+	% Diagram
+	\diagram{backup_danych.pdf}{1} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+    % Diagram sekwencji
+	\sekwencja{backup_sekwencja.pdf}{1}
+	% Pre-conditions
+	\precond{Administrator jest zalogowany w Systemie oraz dostał powiadomienie o potrzebie wykonania Backupu.}
+	% Post-conditions
+	\postcond{Jeśli przypadek użycia został pomyślnie zrealizowany, backup Systemu został wykonany. W przeciwnej sytuacji stan systemu pozostaje niezmieniony.}
+    % Referencje
+	\references{\rf{8} \rnf{2}}
+\end{usecase}
+
+\begin{usecase}{Przywracanie Systemu}
+	% Opis przypadku użycia
+	\desc{Ten przypadek użycia opisuje proces przywracania Systemu przez Administratora.}
+    % Priorytet
+	\priority{10}
+	% Aktorzy
+	\actors{Administrator}
+	% Przebieg główny
+	\main{Ten przypadek użycia zaczyna się gdy Administrator otrzymał powiadomienie o potrzebie przywrócenia Systemu Grapics.}
+	\begin{enumerate}
+		\item Administrator odnajduje odpowiednią wersję Systemu, którą należy przywrócić
+        \item Administrator wybiera opcję "Przywracanie Systemu" z panelu Administratora
+        \item Administrator zaznacza odpowiednie opcje
+		\item Administrator czeka aż proces dobiegnie końca
+	\end{enumerate}
+	% Przebiegi alternatywne
+    \beginalternatives
+	\alternative{Administrator próbował wykonać przywracanie systemu w niedozwolonym momencie}{ System nie pozwoli Administratorowi wykonać takiej opracji w innym momencie niż ten ściśle określony w kontrakcie}
+	%\alternative{Dodatkowa pozycja}{W ten sposób można dodawać kolejne przebiegi alternatywne \ldots}
+	% Diagram
+	\diagram{przywracanie_systemu.pdf}{1} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+    % Diagram sekwencji
+	\sekwencja{przywracanie_systemu_sekwencja.pdf}{1}
+	% Pre-conditions
+	\precond{Administrator jest zalogowany w Systemie oraz dostał powiadomienie o potrzebie przywrócenia Systemu.}
+	% Post-conditions
+	\postcond{Jeśli przypadek użycia został pomyślnie zrealizowany, odpowiednia wersja Systemu została przywrócona. W przeciwnej sytuacji stan systemu pozostaje niezmieniony.}
+    % Referencje
+	\references{\rf{10}}
+\end{usecase}
+
+\begin{usecase}{Przeglądanie logów Systemu}
+	% Opis przypadku użycia
+	\desc{Ten przypadek użycia opisuje przeglądania logów systemu przez Administratora.}
+    % Priorytet
+	\priority{7}
+	% Aktorzy
+	\actors{Administrator}
+	% Przebieg główny
+	\main{Ten przypadek użycia zaczyna się gdy Administrator zamierza przejrzeć logi w Systemie Grapics.}
+	\begin{enumerate}
+		\item Administrator wybiera opcję "Logi" w panelu Administratora
+        \item Administrator zaznacza odpowiednie opcje
+		\item Administrator czeka aż zbieranie logów dobiegnie końca
+        \item Administrator otrzymuje logi w formacie .txt
+	\end{enumerate}
+	% Przebiegi alternatywne
+	%\alternative{Dodatkowa pozycja}{W ten sposób można dodawać kolejne przebiegi alternatywne \ldots}
+	% Diagram
+	\diagram{przegladanie_logow.pdf}{1} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+    % Diagram sekwencji
+	\sekwencja{przegladanie_logow_sekwencja.pdf}{1}
+	% Pre-conditions
+	\precond{Administrator jest zalogowany w Systemie.}
+	% Post-conditions
+	\postcond{Jeśli przypadek użycia został pomyślnie zrealizowany, logi Systemu zostały wygenerowane do pliku .txt. W przeciwnej sytuacji stan systemu pozostaje niezmieniony.}
+    % Referencje
+	\references{\rf{9}}
+\end{usecase}
+
+\begin{usecase}{Rekonfiguracja Systemu}
+	% Opis przypadku użycia
+	\desc{Ten przypadek użycia opisuje proces rekonfiguracji Systemu przez Administratora.}
+    % Priorytet
+	\priority{9}
+	% Aktorzy
+	\actors{Administrator}
+	% Przebieg główny
+	\main{Ten przypadek użycia zaczyna się gdy Administrator otrzymał powiadomienie o potrzebie rekonfiguracji Systemu Grapics.}
+	\begin{enumerate}
+		\item Administrator wybiera opcję "Rekonfiguracja Systemu" w panelu Administratorskim
+        \item Administrator zaznacza odpowiednie opcje
+		\item Administrator czeka aż proces dobiegnie końca
+	\end{enumerate}
+	% Przebiegi alternatywne
+    \beginalternatives
+	\alternative{Administrator próbował wykonać Rekonfiguracje Systemu w niedozwolonym momencie}{ System nie pozwoli Administratorowi wykonać takiej opracji w innym momencie niż ten ściśle określony w kontrakcie}
+	%\alternative{Dodatkowa pozycja}{W ten sposób można dodawać kolejne przebiegi alternatywne \ldots}
+	% Diagram
+	\diagram{rekonfiguracja_systemu.pdf}{1} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+    % Diagram sekwencji
+	\sekwencja{rekonfiguracja_sekwencja.pdf}{1}
+	% Pre-conditions
+	\precond{Administrator jest zalogowany w Systemie oraz dostał powiadomienie o potrzebie rekonfiguracji Systemu.}
+	% Post-conditions
+	\postcond{Jeśli przypadek użycia został pomyślnie zrealizowany, rekonfiguracja Systemu została wykonana. W przeciwnej sytuacji stan systemu pozostaje niezmieniony.}
+    % Referencje
+	\references{\rf{10}}
+\end{usecase}

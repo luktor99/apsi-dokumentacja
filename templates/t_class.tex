@@ -1,0 +1,13 @@
+\newcounter{ClassCounter}
+\setcounter{ClassCounter}{1}
+
+\newcommand{\headerCD}[1]{\subsection{#1}}
+
+\newcommand{\diagramCD}[2]{\vspace{-0.5em}\subsubsection{Diagram klas}\noindent
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=#2\textwidth]{diagrams/#1}
+	\end{figure}
+	\FloatBarrier}
+
+\newenvironment{class}{\headerSQ}{\stepcounter{ClassCounter}}

@@ -1,0 +1,14 @@
+\newcounter{SequenceCounter}
+\setcounter{SequenceCounter}{1}
+
+\newcommand{\headerSQ}[1]{\subsection{#1}}
+
+\newcommand{\diagramSQ}[2]{\vspace{-0.5em}\subsubsection{}\noindent
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=#2\textwidth]{diagrams/#1}
+	\end{figure}
+	\FloatBarrier}
+
+\newenvironment{sequence}{\headerSQ}{\stepcounter{SequenceCounter}}
+%\newcommand{\sequnece}[3]{\headerSQ{#1} \diagramSQ{#2}{#3} \stepcounter{SequenceCounter}}

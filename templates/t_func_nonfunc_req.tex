@@ -1,0 +1,22 @@
+\newcounter{FuncReqCounter}
+\setcounter{FuncReqCounter}{1}
+\newcounter{NonFuncReqCounter}
+\setcounter{NonFuncReqCounter}{1}
+
+\definecolor{colorFR}{RGB}{108,113,196}
+\definecolor{colorNFR}{RGB}{220,50,47}
+\newcommand{\funcreqbox}[1]{\colorbox{colorFR}{\textcolor{white}{#1}}}
+\newcommand{\nonfuncreqbox}[1]{\colorbox{colorNFR}{\textcolor{white}{#1}}}
+
+\newcommand{\headerFR}[1]{\subsection[(F\arabic{FuncReqCounter}) #1]{\funcreqbox{F\arabic{FuncReqCounter}} #1}}
+\newcommand{\headerNFR}[1]{\subsection[(NF\arabic{NonFuncReqCounter}) #1]{\nonfuncreqbox{NF\arabic{NonFuncReqCounter}} #1}}
+\newcommand{\prioritytable}[2]{\begin{tabular}[ht!]{|l|c|}
+		\hline
+		Priorytet realizacji: & #1\\
+		\hline
+		Złożoność realizacji: & #2\\
+		\hline
+\end{tabular}}
+
+\newcommand{\funcreq}[3]{\headerFR{#1} \prioritytable{#2}{#3} \stepcounter{FuncReqCounter}}
+\newcommand{\nonfuncreq}[3]{\headerNFR{#1} \stepcounter{NonFuncReqCounter}}

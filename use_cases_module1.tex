@@ -1,0 +1,89 @@
+\begin{usecase}{Uwierzytelnianie użytkownika}
+	% Opis przypadku użycia
+	\desc{Ten ogólny przypadek użycia opisuje proces uwierzytelniania użytkowników w systemie Grapics.}
+    % Priorytet
+	\priority{10}
+	% Aktorzy
+	\actors{Użytkownik, Gość}
+	% Przebieg główny
+	\main{Ten przypadek użycia zaczyna się gdy Użytkownik chcę korzystać z Systemu Grapics.}
+	\begin{enumerate}
+		\item Logowanie
+        \item Rejestracja
+	\end{enumerate}
+    \beginalternatives
+	\alternative{Użytkownik nie jest zarejestrowany}{Jeśli użytkownik nie jest jeszcze zarejstrowany, nie może on się zalogować. Jeśli nie przejdzie procesu rejestracji, nie będzie on mógł pomyślnie przejśćprocesu uwierzytelniania co kończy ten przypadek użycia. }
+	%\alternative{Dodatkowa pozycja}{W ten sposób można dodawać kolejne przebiegi alternatywne \ldots}
+	% Diagram
+	\diagram{uwierzytelnianie.pdf}{1} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Pre-conditions
+	\precond{Brak. }
+	% Post-conditions
+	\postcond{Jeśli przypadek użycia został pomyślnie zrealizowany, aktor jest uewierzytelniony w Systemie.}
+    % Referencje
+	\references{\rf{1} \rf{2} \rf{4}}
+\end{usecase}
+
+\begin{usecase}{Logowanie}
+\label{logowanie}
+	% Opis przypadku użycia
+	\desc{Ten przypadek użycia opisuje jak użytkownik loguje się do systemu Grapics.}
+    % Priorytet
+	\priority{10}
+	% Aktorzy
+	\actors{Użytkownik}
+	% Przebieg główny
+	\main{Ten przypadek użycia zaczyna się gdy użytkownik próbuje zalogować się do systemu.}
+	\begin{enumerate}
+		\item System prosi Użytkownika o zalogowanie
+		\item Użytkownik podaje swoją nazwę użytkownika oraz hasło
+		\item System potwierdza poprawność danych i loguje użytkownika do systemu
+	\end{enumerate}
+	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Nieprawidłowa nazwa użytkownika/hasło}{Jeśli użytkownik podał złą nazwą użytkownika i/lub hasło System wyświetla odpowiedni komunikat błędu. Aktor w tym momencie może zdecydować by wrócić do początku przebiegu podstawowego lub anulowa logowanie, co kończy ten przypadek użycia}
+	%\alternative{Dodatkowa pozycja}{W ten sposób można dodawać kolejne przebiegi alternatywne \ldots}
+	% Diagram
+	\diagram{logowanie.pdf}{1} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+    % Diagram sekwencji
+	\sekwencja{logowanie_sekwencja.pdf}{1}
+	% Pre-conditions
+	\precond{Użytkownik jest zarejestrowany w systemie.}
+	% Post-conditions
+	\postcond{Jeśli przypadek użycia został pomyślnie zrealizowany, aktor jest zalogowany do systemu. W przeciwnej sytuacji stan systemu pozostaje niezmieniony.}
+    % Referencje
+	\references{\rf{2}}
+\end{usecase}
+
+\begin{usecase}{Rejestracja}
+	% Opis przypadku użycia
+	\desc{Ten przypadek użycia opisuje proces zakładania konta w systemu Grapics.}
+    % Priorytet
+	\priority{10}
+	% Aktorzy
+	\actors{Administrator, Gość}
+	% Przebieg główny
+	\main{Ten przypadek użycia zaczyna się gdy użytkownik próbuje zarejestrować się w systemie.}
+	\begin{enumerate}
+		\item System prosi Użytkownika o wypełnienie formularza rejestracyjnego
+		\item Użytkownik wypełnia formularz
+		\item System potwierdza poprawność danych
+        \item Administrator zatwierdza konto nowo-zarejestrowanego użytkownika
+	\end{enumerate}
+	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Nieprawidłowa nazwa użytkownika/hasło}{Jeśli użytkownik podał znazwę użytkownika, która już jest używana w systemie lub/i hasło, które nie spełnia wymogów systemowych, System wyświetla odpowiedni komunikat błędu. Aktor w tym momencie może zdecydować by wrócić do początku przebiegu podstawowego lub anulować rejestrację, co kończy ten przypadek użycia}
+    \alternative{Administrator nie zatwierdzi konta}{Administrator zatwierdza tylko konta, których dane pokrywają się z wewnętrzną listą klientów. Jeśli nieuprawniona osoba próbowała założyć konto, nie zostanie ono zatwierdzone co kończy ten przypadek użycia}
+	%\alternative{Dodatkowa pozycja}{W ten sposób można dodawać kolejne przebiegi alternatywne \ldots}
+	% Diagram
+	\diagram{rejestracja.pdf}{1} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+    % Diagram sekwencji
+	\sekwencja{rejestracja_sekwencja.pdf}{1}
+	% Pre-conditions
+	\precond{Brak.}
+	% Post-conditions
+	\postcond{Jeśli przypadek użycia został pomyślnie zrealizowany, aktor jest zarejestrowany w Systemie i może przytąpić do logowania się. W przeciwnej sytuacji stan systemu pozostaje niezmieniony.}
+    % Referencje
+	\references{\rf{1} \rf{4} \rnf{1} \rnf{2}}
+\end{usecase}
+
