@@ -32,11 +32,15 @@
 \end{usecase}
 % może nie usuwajcie tego szablonu z góry, będzie można sobie kopiować
 
-% DONE
+
 \begin{usecase}{Przeglądanie Projektów}
 \label{przegladanie_projektow}
 	% Opis przypadku użycia
 	\desc{Użytkownik przegląda Projekty, w których funkcjonuje w roli Członka Projektu}
+	% Priorytet
+	\priority{10}
+	% Aktorzy
+	\actors{Użytkownik, Członek Projektu}
 	% Przebieg główny
 	\begin{enumerate}
       \item Użytkownik wchodzi w sekcję "moje projekty"
@@ -47,13 +51,17 @@
 	\diagram{przegladanie_projektow.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
 	% Pre-conditions
 	\precond{Użytkownik jest zalogowany (\ref{logowanie})}
+	\references{\rf{3}}
 \end{usecase}
 
-% DONE
 \begin{usecase}{Tworzenie Projektu}
 \label{tworzenie_projektu}
 	% Opis przypadku użycia
 	\desc{Użytkownik tworzy nowy Projekt}
+	% Priorytet
+	\priority{10}
+	% Aktorzy
+	\actors{Użytkownik}
 	% Przebieg główny
 	\begin{enumerate}
     \item Użytkownik przegląda istniejące Projekty (\ref{przegladanie_projektow})
@@ -67,12 +75,17 @@
 	\precond{Użytkownik jest zalogowany}
 	% Post-conditions
 	\postcond{Został utworzony nowy Projekt, a Użytkownik, który go stworzył, zostaje Twórcą tego Projektu}
+	\references{\rf{1}}
 \end{usecase}
 
-% DONE
+
 \begin{usecase}{Edycja Projektu}
 	% Opis przypadku użycia
 	\desc{Twórca Projektu edytuje swój Projekt}
+	% Priorytet
+	\priority{10}
+	% Aktorzy
+	\actors{Twórca Projektu}
 	% Przebieg główny
 	\begin{enumerate}
     \item Twórca Projektu przegląda istniejące Projekty (\ref{przegladanie_projektow})
@@ -86,13 +99,17 @@
 	\precond{Użytkownik jest zalogowany (\ref{logowanie}) i jest Twórcą edytowanego Projektu (\ref{tworzenie_projektu})}
 	% Post-conditions
 	\postcond{Właściwości Projektu zostały zmienione}
+	\references{\rf{9}}
 \end{usecase}
 
 
-% DONE
 \begin{usecase}{Zamknięcie projektu}
 	% Opis przypadku użycia
 	\desc{Twórca Projektu zgłasza do zamknięcia swój Projekt}
+	% Priorytet
+	\priority{10}
+	% Aktorzy
+	\actors{Twórca Projektu}
 	% Przebieg główny
 	\begin{enumerate}
 	\item Twórca Projektu przegląda istniejące Projekty (\ref{przegladanie_projektow})
@@ -105,16 +122,19 @@
 	% Pre-conditions
 	\precond{Użytkownik jest zalogowany (\ref{logowanie}) i jest Twórcą zamykanego Projektu (\ref{tworzenie_projektu})}
 	% Post-conditions
-	\postcond{Projekt został zamknięty, Użytkownik nie jest już Twórcą Projektu}
+	\postcond{Projekt został zamknięty, Użytkownik nie jest już Twórcą Projektu, }
 \end{usecase}
 
 
 
-% DONE
 \begin{usecase}{Tworzenie Zgłoszenia}
 \label{tworzenie_zgloszenia}
 	% Opis przypadku użycia
 	\desc{Opisuje proces, w którym Użytkownik będący Członkiem Projektu dodaje nowe Zgłoszenie do Projektu}
+	% Priorytet
+	\priority{7}
+	% Aktorzy
+	\actors{Członek Projektu, Osoba Odpowiedzialna}
 	% Przebieg główny
 	\begin{enumerate}
       \item Członek Projektu przegląda istniejące Projekty (\ref{przegladanie_projektow})
@@ -137,6 +157,10 @@
 \begin{usecase}{Zamknięcie Zgłoszenia}
 	% Opis przypadku użycia
 	\desc{Twórca Zgłoszenia zamyka swoje Zgłoszenie}
+	% Priorytet
+	\priority{6}
+	% Aktorzy
+	\actors{Twórca Zgłoszenia}
 	\begin{enumerate}
     \item Twórca Zgłoszenia przegląda istniejące Projekty (\ref{przegladanie_projektow})
     \item Twórca Zgłoszenia wybiera Projekt
@@ -155,6 +179,10 @@
 \begin{usecase}{Zmiana widoczności Zgłoszenia}
 	% Opis przypadku użycia
 	\desc{Twórca Zgłoszenia zmienia widoczność swojego Zgłoszenia}
+	% Priorytet
+	\priority{4}
+	% Aktorzy
+	\actors{Twórca Zgłoszenia}
     % Przebieg główny
 	\begin{enumerate}
     \item Twórca Zgłoszenia przegląda istniejące Projekty (\ref{przegladanie_projektow})
@@ -175,6 +203,10 @@
 \label{edycja_zgloszenia}
 	% Opis przypadku użycia
 	\desc{Twórca Zgłoszenia edytuje podstawowe informacje o Zgłoszeniu}
+	% Priorytet
+	\priority{6}
+	% Aktorzy
+	\actors{Twórca Zgłoszenia}
     % Przebieg główny
 	\begin{enumerate}
 	\item Twórca Zgłoszenia przegląda istniejące Projekty (\ref{przegladanie_projektow})
@@ -197,6 +229,10 @@
 \label{wyznaczenie_osoby_odpowiedzialnej}
 	% Opis przypadku użycia
 	\desc{Twórca Zgłoszenia wyznacza Użytkownika jako Odbiorcę Zgłoszenia dla danego Zgłoszenia}
+	% Priorytet
+	\priority{6}
+	% Aktorzy
+	\actors{Twórca Zgłoszenia, Osoba Odpowiedzialna, Użytkownik}
 	% Przebieg główny
 	\begin{enumerate}
     \item Twórca Zgłoszenia przegląda istniejące Projekty (\ref{przegladanie_projektow})
@@ -219,6 +255,10 @@
 \begin{usecase}{Edycja Grafu}
 	% Opis przypadku użycia
 	\desc{Twórca Projektu planuje kolejne etapy Projektu w formie Zgłoszeń, przechowywanych w postaci Grafu}
+	% Priorytet
+	\priority{8}
+	% Aktorzy
+	\actors{Twórca Projektu}
 	% Przebieg główny
 	\begin{enumerate}
     \item Twórca Projektu przegląda istniejące Projekty (\ref{przegladanie_projektow})
@@ -239,8 +279,11 @@
 	% Opis przypadku użycia
 	\desc{Twórca Projektu ustawia szczegółowe uprawnienia innym Członkom Projektu}
 	% Przebieg główny
+	% Priorytet
+	\priority{5}
+	% Aktorzy
+	\actors{Twórca Projektu, Członek Projektu}
 	\begin{enumerate}
-    \item Użytkownik loguje się
     \item Użytkownik wchodzi w sekcję ‘swoje projekty’
     \item Użytkownik wybiera odpowiedni projekt
     \item Użytkownik wybiera opcję ‘zarządzaj Członkami Projektu’
@@ -259,9 +302,12 @@
 \begin{usecase}{Tworzenie projektu z wieloma zgłoszeniami}
 	% Opis przypadku użycia
 	\desc{Użytkownik tworzy projekty zawierające wiele Zgłoszeń}
+	% Priorytet
+	\priority{4}
+	% Aktorzy
+	\actors{Użytkownik, Twórca Projektu}
 	% Przebieg główny
 	\begin{enumerate}
-    \item Użytkownik loguje się
     \item Użytkownik wybiera opcję ‘utwórz nowy Projekt’
     \item Użytkownik wypełnia odpowiednia informacje o Nowym Projekcie
     \item Użytkownik dodaje innych użytkowników jako Członków Projektu
@@ -271,14 +317,18 @@
 	% Diagram
 	\diagram{tworzenie_projektu_z_wieloma_zgloszeniami.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
 	% Pre-conditions
-	\precond{Jest Twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
+	\precond{Użytkownik jest zalogowany (\ref{logowanie})}
 	% Post-conditions
-	\postcond{Powstanie co najmniej jednego zgłoszenia}
+	\postcond{Powstanie projekt z wieloma zgłoszeniami}
 \end{usecase}
 
-\begin{usecase}{Udział informacji zwrotnej}
+\begin{usecase}{Udzielenie informacji zwrotnej}
 	% Opis przypadku użycia
 	\desc{Odbiorca Zgłoszenia udziela informacji zwrotnej Osobie Odpowiedzialnej przez zmianę statusu Zgłoszenia.}
+	% Priorytet
+	\priority{5}
+	% Aktorzy
+	\actors{Odbiorca Zgłoszenia, Osoba Odpowiedzialna}
 	% Przebieg główny
 	\begin{enumerate}
     \item Odbiorca Zgłoszenia  loguje się
@@ -301,6 +351,10 @@
 \begin{usecase}{Aktualizacja zasobów}
 	% Opis przypadku użycia
 	\desc{Odbiorca Zgłoszenia aktualizuje Zasoby Zgłoszenia.}
+	% Priorytet
+	\priority{4}
+	% Aktorzy
+	\actors{Odbiorca Zgłoszenia}
 	% Przebieg główny
 	\begin{enumerate}
     \item Odbiorca Zgłoszenia wchodzi na stronę
@@ -320,8 +374,11 @@
 
 \begin{usecase}{Pobieranie załączników}
 	% Opis przypadku użycia
-	\desc{Twórca/Odbiorca Zgłoszenia/Odbiorca pobiera załączniki dodane do Zgłoszeń.
-}
+	\desc{Członek Projektu pobiera załączniki dodane do Zgłoszeń}
+	% Priorytet
+	\priority{3}
+	% Aktorzy
+	\actors{Członek Projektu}
 	% Przebieg główny
 	\begin{enumerate}
     \item Osoba wchodzi na stronę
@@ -342,6 +399,10 @@
 \begin{usecase}{Przeszukiwanie zgłoszeń}
 	% Opis przypadku użycia
 	\desc{Członek Projektu przeszukuje Zgłoszenia w Projekcie.}
+	% Priorytet
+	\priority{4}
+	% Aktorzy
+	\actors{Użytkownik}
 	% Przebieg główny
 	\begin{enumerate}
     \item Użytkownik loguje się
@@ -361,6 +422,10 @@
 \begin{usecase}{Wysyłanie informacji o zamknięciu projektu, "Odbiorca-Twórca"}
 	% Opis przypadku użycia
 	\desc{Odbiorca Zgłoszenia wysyłam Twórcy Zgłoszenia informacje, że Zgłoszenie jest do zamknięcia. (ja bym dał: Odbiorca Zgłoszenia za Zgłoszenie zmienia jego status.)}
+	% Priorytet
+	\priority{5}
+	% Aktorzy
+	\actors{Odbiorca Zgłoszenia, Twórca Zgłoszenia}
 	% Przebieg główny
 	\begin{enumerate}
     \item Odbiorca Zgłoszenia loguje się do systemu
@@ -380,6 +445,10 @@
 \begin{usecase}{Wysłanie informacji o zamknięciu projektu, "Użytkownik-Twórca"}
 	% Opis przypadku użycia
 	\desc{Członek Projektu wysyła Twórcy Projektu informacje, że  projekt jest do zamknięcia.}
+	% Priorytet
+	\priority{4}
+	% Aktorzy
+	\actors{Członek Projektu, Twórca Projektu}
 	% Przebieg główny
 	\begin{enumerate}
     \item Członek projektu wchodzi na stronę
