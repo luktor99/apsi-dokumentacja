@@ -50,6 +50,10 @@
 	% Diagram
 	\diagram{przegladanie_projektow.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
 	% Pre-conditions
+	% Diagram sekwencji
+	\sekwencja{przegladanie_projektow_sekwencja_fit.pdf}{0.9}
+	% Diagram klas
+	%\klasa{przegladanie_logow_klas.pdf}{1}
 	\precond{Użytkownik jest zalogowany (\ref{logowanie})}
 	\references{\rf{13}}
 \end{usecase}
@@ -96,6 +100,8 @@
 	\end{enumerate}
 	% Diagram
 	\diagram{edycja_projektu.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	\sekwencja{edycja_projektu_sekwencja_fit.pdf}{0.9}
 	% Pre-conditions
 	\precond{Użytkownik jest zalogowany (\ref{logowanie}) i jest Twórcą edytowanego Projektu (\ref{tworzenie_projektu})}
 	% Post-conditions
@@ -120,6 +126,8 @@
 	\end{enumerate}
 	% Diagram
 	\diagram{zamkniecie_projektu.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	\sekwencja{zamkniecie_projektu_sekwencja_fit.pdf}{0.9}
 	% Pre-conditions
 	\precond{Użytkownik jest zalogowany (\ref{logowanie}) i jest Twórcą zamykanego Projektu (\ref{tworzenie_projektu})}
 	% Post-conditions
@@ -148,6 +156,8 @@
 	\alternative{Wybranie Osoby Odpowiedzialnej za Zgłoszenie}{Członek Projektu wybiera Osobę Odpowiedzialną za utworzone zgłoszenie spośród Członków Projektu (\ref{wyznaczenie_osoby_odpowiedzialnej})}
 	% Diagram
 	\diagram{tworzenie_zgloszenia.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	\sekwencja{tworzenie_zgloszenia_sekwencja_fit.pdf}{0.9}
 	% Pre-conditions
 	\precond{Użytkownik (Członek Projektu) jest zalogowany (\ref{logowanie}) i jest członkiem przynajmniej jednego Projektu}
 	% Post-conditions
@@ -171,6 +181,8 @@
     \end{enumerate}
 	% Diagram
 	\diagram{zamkniecie_zgloszenia.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	\sekwencja{zamkniecie_zgloszenia_sekwencja_fit.pdf}{0.9}
 	% Pre-conditions
     \precond{Użytkownik jest zalogowany (\ref{logowanie}) i jest Twórcą zamykanego Zgłoszenia (\ref{tworzenie_zgloszenia})}
 	% Post-conditions
@@ -195,6 +207,8 @@
 	\end{enumerate}
 	% Diagram
 	\diagram{zmiana_widocznosci_zgloszenia.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	\sekwencja{zmiana_widocznosci_zgloszenia_sekwencja_fit.pdf}{0.9}
 	% Pre-conditions
 	\precond{Użytkownik jest zalogowany (\ref{logowanie}) i jest Twórcą edytowanego Zgłoszenia (\ref{tworzenie_zgloszenia})}
 	% Post-conditions
@@ -222,6 +236,8 @@
 	\end{enumerate}
 	% Diagram
 	\diagram{edycja_zgloszenia.pdf}{0.9} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	\sekwencja{edycja_zgloszenia_sekwencja_fit.pdf}{0.9}
 	% Pre-conditions
 	\precond{Użytkownik jest zalogowany (\ref{logowanie}), należy do przynajmniej jednego Projektu i jest Twórcą przynajmniej jednego Zgłoszenia (\ref{tworzenie_zgloszenia})}
 	% Post-conditions
