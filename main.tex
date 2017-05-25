@@ -125,7 +125,31 @@ Moduł odpowiedzialny za szeroko rozumianą obsługę projektów. Moduł ten zaw
 \chapter{Specyfikacja sprzętu i oprogramowania podstawowego}
 \todo
 \chapter{Specyfikacja technologii}
-\todo
+Aplikacja opiera się o szereg technologii, które dzięki wzajemnej współpracy dostarczają spójny i niezawodny system. Wykorzystane technologie można podzielić na następujące grupy:
+\begin{itemize}
+	\item technologie użyte po stronie serwera (back-end),
+	\item technologie użyte w interfejsie użytkownika (front-end),
+	\item technologie użyte do przechowywania danych.
+\end{itemize}
+\section{Technologie użyte po stronie serwera}
+Obsługa żądań napływających od klientów, wydawanych za pośrednictwem interfejsu użytkownika, obsługiwana będzie przez dedykowaną aplikację napisaną w języku Java. Technologia ta znajduje szerokie zastosowanie w tego typu systemach ze względu na niezawodność, stosunkowy krótki czas rozwoju oprogramowania oraz dobrą skalowalność. Także w przypadku systemu Grapics, właśnie te czynniki wpłynęły na wybór tej technologii.
+
+Do obsługi zarządzania projektem oprogramowania używane będzie narzędzie Apache Maven. Automatyzuje ono proces budowania aplikacji oraz upraszcza problem zarządzania kodem źródłowym i zależnościami.
+
+Aby zapewnić spójność i standaryzację kodu źródłowego, używany będzie szkielet tworzenia aplikacji Spring, wraz z modułami:
+\begin{itemize}
+	\item Boot -- pozwala na szybkie tworzenie nowego projektu z określonymi zależnościami,
+	\item Data -- obsługuje połączenie z bazą danych oraz realizuje wymagane transakcje,
+	\item Web -- używany do tworzenia aplikacji webowych, w szczególności pozwala na wystawianie interfejsów REST, wykorzystywanych w systemie Grapics.
+\end{itemize}
+Do uruchamiania aplikacji po stronie serwera posłuży oprogramowanie Apache Tomcat, które pozwala na uruchamianie aplikacji stworzonych w technologii Spring w dedykowanym kontenerze. Zapewnia to niezawodność systemu, a w związku z tym umożliwia uzyskanie założonego czas dostępności.
+
+\section{Technologie użyte w interfejsie użytkownika}
+Interfejs użytkownika, w postaci aplikacji uruchamianej w przeglądarce, stworzony zostanie w oparciu o framework Angular 4. Jest to szkielet aplikacyjny oparty na języku JavaScript, który umożliwia tworzenie zaawansowanych aplikacji w krótkim czasie. 
+
+Do uruchomienia stworzonej aplikacji internetowej użyte zostanie środowisko NodeJS. Zapewnia ono wysoką skalowalność tworzonych rozwiązań oraz dużą niezawodność.
+\section{Technologie użyte do przechowywania danych}
+Dane, które muszą być permanentnie przechowywane, składowane będą w bazie danych MongoDB. Ten system bazodanowy pozwala w sposób wydajny przechowywać wszelkie dokumenty, jakie mogą zostać powiązane z tworzonymi w systemie projektami i zgłoszeniami.
 \chapter{Przypadki użycia}
 \section{Moduł uwierzytelniania}
 \input{use_cases_module1}
