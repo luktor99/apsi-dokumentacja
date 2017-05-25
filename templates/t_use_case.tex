@@ -56,8 +56,8 @@
 \definecolor{xcolorNFR}{RGB}{220,50,47}
 \newcommand{\xfuncreqbox}[1]{\colorbox{xcolorFR}{\textcolor{white}{#1}}}
 \newcommand{\xnonfuncreqbox}[1]{\colorbox{xcolorNFR}{\textcolor{white}{#1}}}
-\newcommand{\rf}[1]{\xfuncreqbox{F#1}}
-\newcommand{\rnf}[1]{\xnonfuncreqbox{NF#1}}
+\newcommand{\rf}[1]{\hyperref[F#1]{\xfuncreqbox{F#1}}}
+\newcommand{\rnf}[1]{\hyperref[NF#1]{\xnonfuncreqbox{NF#1}}}
 
 \newcommand{\actors}[1]{\subsubsection{Aktorzy: \textnormal{#1}}}
 \newcommand{\priority}[1]{\subsubsection{Priorytet: \textnormal{#1}}}
