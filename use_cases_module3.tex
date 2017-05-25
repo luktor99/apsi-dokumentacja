@@ -278,6 +278,10 @@
 \begin{usecase}{Ustawienie szczegółowych uprawnień}
 	% Opis przypadku użycia
 	\desc{Twórca Projektu ustawia szczegółowe uprawnienia innym Członkom Projektu}
+	% Priorytet
+	\priority{6}
+	% Aktorzy
+	\actors{Użytkownik}
 	% Przebieg główny
 	% Priorytet
 	\priority{5}
@@ -291,21 +295,37 @@
     \item Użytkownik zmienia uprawnienia wybranego Członka Projektu
 	\end{enumerate}
 	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Alternative flow 1}{Działanie się nie wykona, jeżeli użytkownik nie będzie miał uprawnień do nadawania uprawnień innym aktorom.}
 	% Diagram
 	\diagram{ustawienia_szczegolowych_uprawnien.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\sekwencja{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\klasa{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
 	% Pre-conditions
-	\precond{Użytkownik jest zalogowany (\ref{logowanie})  i jest Twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
+	\precond{Użytkownik jest zalogowany i jest Twórcą przynajmniej jednego Projektu }
 	% Post-conditions
 	\postcond{Uprawnienia co najmniej jednego użytkownika zostały zmienione}
+	% Referencje
+	\references{\rf{1} \rf{2} \rf{6}}
 \end{usecase}
 
 \begin{usecase}{Tworzenie projektu z wieloma zgłoszeniami}
 	% Opis przypadku użycia
+<<<<<<< HEAD
 	\desc{Użytkownik tworzy projekty zawierające wiele Zgłoszeń}
 	% Priorytet
 	\priority{4}
 	% Aktorzy
 	\actors{Użytkownik, Twórca Projektu}
+=======
+	\desc{Użytkownik tworzy projekty zawierające wiele zgłoszeń}
+	% Priorytet
+	\priority{4}
+	% Aktorzy
+	\actors{Użytkownik}
+>>>>>>> b858ec49871f40a2edb9189b2ac8da0af5e6ebfd
 	% Przebieg główny
 	\begin{enumerate}
     \item Użytkownik wybiera opcję ‘utwórz nowy Projekt’
@@ -314,21 +334,42 @@
     \item Użytkownik tworzy Zgłoszenia w danym projekcie.
 	\end{enumerate}
 	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Alternative flow 1}{Przy odpowiednio dużej ilości zgłoszeń system nie pozwoli tworzenie projektu}
+	\alternative{Alternative flow 2}{Jeżeli użytkownik poda niepoprawne hasło system zwróci komunikat o tym}
 	% Diagram
 	\diagram{tworzenie_projektu_z_wieloma_zgloszeniami.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\sekwencja{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\klasa{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
 	% Pre-conditions
+<<<<<<< HEAD
 	\precond{Użytkownik jest zalogowany (\ref{logowanie})}
 	% Post-conditions
 	\postcond{Powstanie projekt z wieloma zgłoszeniami}
+=======
+	\precond{Jest Twórcą przynajmniej jednego Projektu}
+	% Post-conditions
+	\postcond{Powstanie co najmniej jednego zgłoszenia}
+	% Referencje
+	\references{\rf{11} \rf{14}}
+>>>>>>> b858ec49871f40a2edb9189b2ac8da0af5e6ebfd
 \end{usecase}
 
 \begin{usecase}{Udzielenie informacji zwrotnej}
 	% Opis przypadku użycia
 	\desc{Odbiorca Zgłoszenia udziela informacji zwrotnej Osobie Odpowiedzialnej przez zmianę statusu Zgłoszenia.}
 	% Priorytet
+<<<<<<< HEAD
 	\priority{5}
 	% Aktorzy
 	\actors{Odbiorca Zgłoszenia, Osoba Odpowiedzialna}
+=======
+	\priority{3}
+	% Aktorzy
+	\actors{Użytkownik}
+>>>>>>> b858ec49871f40a2edb9189b2ac8da0af5e6ebfd
 	% Przebieg główny
 	\begin{enumerate}
     \item Odbiorca Zgłoszenia  loguje się
@@ -340,21 +381,35 @@
     \item Odbiorca Zgłoszenia zatwierdza zmiany
 	\end{enumerate}
 	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Alternative flow 1}{Działanie się nie powiedzie, jeżeli użtkownik będzie miał status projektu zamkniętego}
 	% Diagram
 	\diagram{udzial_informacji_zwrotnej.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\sekwencja{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\klasa{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
 	% Pre-conditions
-	\precond{Odbiorca Zgłoszenia jest twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
+	\precond{Odbiorca Zgłoszenia jest twórcą przynajmniej jednego Projektu}
 	% Post-conditions
 	\postcond{Zmiana statusu}
+	% Referencje
+	\references{\rf{11} \rf{13} \rf{18} \rf{20}}
 \end{usecase}
 
 \begin{usecase}{Aktualizacja zasobów}
 	% Opis przypadku użycia
 	\desc{Odbiorca Zgłoszenia aktualizuje Zasoby Zgłoszenia.}
 	% Priorytet
+<<<<<<< HEAD
 	\priority{4}
 	% Aktorzy
 	\actors{Odbiorca Zgłoszenia}
+=======
+	\priority{8}
+	% Aktorzy
+	\actors{Użytkownik}
+>>>>>>> b858ec49871f40a2edb9189b2ac8da0af5e6ebfd
 	% Przebieg główny
 	\begin{enumerate}
     \item Odbiorca Zgłoszenia wchodzi na stronę
@@ -364,21 +419,37 @@
     \item Zmiana się powiodła
 	\end{enumerate}
 	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Alternative flow 1}{Jeżeli po zalogowaniu nie będzie "propozycji" to działanie się nie powiedzie}
 	% Diagram
 	\diagram{aktualizacja_zasobow.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\sekwencja{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\klasa{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
 	% Pre-conditions
-	\precond{Odbiorca Zgłoszenia jest twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
+	\precond{Odbiorca Zgłoszenia jest twórcą przynajmniej jednego Projektu}
 	% Post-conditions
 	\postcond{Zmiana zasobów zgłoszenia}
+	% Referencje
+	\references{\rf{17} \rf{18} \rf{19}}
 \end{usecase}
 
 \begin{usecase}{Pobieranie załączników}
 	% Opis przypadku użycia
+<<<<<<< HEAD
 	\desc{Członek Projektu pobiera załączniki dodane do Zgłoszeń}
 	% Priorytet
 	\priority{3}
 	% Aktorzy
 	\actors{Członek Projektu}
+=======
+	\desc{Twórca/Odbiorca Zgłoszenia/Odbiorca pobiera załączniki dodane do Zgłoszeń.}
+	% Priorytet
+	\priority{2}
+	% Aktorzy
+	\actors{Użytkownik, Twórca projektu}
+>>>>>>> b858ec49871f40a2edb9189b2ac8da0af5e6ebfd
 	% Przebieg główny
 	\begin{enumerate}
     \item Osoba wchodzi na stronę
@@ -390,17 +461,27 @@
 	% Przebiegi alternatywne
 	% Diagram
 	\diagram{pobieranie_zalacznikow.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\sekwencja{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\klasa{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
 	% Pre-conditions
 	\precond{Odbiorca Zgłoszenia jest twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
 	% Post-conditions
 	\postcond{Zmiana zasobów zgłoszenia}
+	% Referencje
+	\references{\rf{31}}
 \end{usecase}
 
 \begin{usecase}{Przeszukiwanie zgłoszeń}
 	% Opis przypadku użycia
 	\desc{Członek Projektu przeszukuje Zgłoszenia w Projekcie.}
 	% Priorytet
+<<<<<<< HEAD
 	\priority{4}
+=======
+	\priority{7}
+>>>>>>> b858ec49871f40a2edb9189b2ac8da0af5e6ebfd
 	% Aktorzy
 	\actors{Użytkownik}
 	% Przebieg główny
@@ -411,21 +492,36 @@
     \item Jeżeli nie znalazł nic wyświetla komunikat “Takich zgłoszeń nie ma”
 	\end{enumerate}
 	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Alternative flow 1}{Jeżeli nie będzie znaleziono żadnego ze zgłoszeń aplikacja wyświetli odpowiedni komunikat}
 	% Diagram
 	\diagram{przeszukiwanie_zgloszen.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	%\sekwencja{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\klasa{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
 	% Pre-conditions
 	\precond{Odbiorca Zgłoszenia jest twórcą przynajmniej jednego Projektu (\ref{tworzenie_projektu})}
 	% Post-conditions
 	\postcond{Uzyskanie odpowiednich zgłoszeń lub informacji że ich brak}
+	% Referencje
+	\references{\rf{32}}
 \end{usecase}
 
 \begin{usecase}{Wysyłanie informacji o zamknięciu projektu, "Odbiorca-Twórca"}
 	% Opis przypadku użycia
+<<<<<<< HEAD
 	\desc{Odbiorca Zgłoszenia wysyłam Twórcy Zgłoszenia informacje, że Zgłoszenie jest do zamknięcia. (ja bym dał: Odbiorca Zgłoszenia za Zgłoszenie zmienia jego status.)}
 	% Priorytet
 	\priority{5}
 	% Aktorzy
 	\actors{Odbiorca Zgłoszenia, Twórca Zgłoszenia}
+=======
+	\desc{Odbiorca Zgłoszenia wysyłam Twórcy Zgłoszenia informacje, że zgłoszenie jest do zamknięcia}
+	% Priorytet
+	\priority{5}
+	% Aktorzy
+	\actors{Użytkownik, Twórca projektu}
+>>>>>>> b858ec49871f40a2edb9189b2ac8da0af5e6ebfd
 	% Przebieg główny
 	\begin{enumerate}
     \item Odbiorca Zgłoszenia loguje się do systemu
@@ -434,21 +530,35 @@
     \item Odbiorca Zgłoszenia wysyła mail
 	\end{enumerate}
 	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Alternative flow 1}{Jeżeli adres @mail nie będzie podany,
+	system wyświetli odpowiedni komunikat}
 	% Diagram
 	\diagram{odbiorca_tworca.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	%\sekwencja{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\klasa{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
 	% Pre-conditions
 	\precond{Odbiorca i twórca muszą należeć do co najmniej jednego projektu.}
 	% Post-conditions
 	\postcond{Uzyskanie odpowiednich zgłoszeń lub informacji, że jest ich brak}
+	% Referencje
+	\references{\rf{20} \rf{21}}
 \end{usecase}
 
 \begin{usecase}{Wysłanie informacji o zamknięciu projektu, "Użytkownik-Twórca"}
 	% Opis przypadku użycia
 	\desc{Członek Projektu wysyła Twórcy Projektu informacje, że  projekt jest do zamknięcia.}
 	% Priorytet
+<<<<<<< HEAD
 	\priority{4}
 	% Aktorzy
 	\actors{Członek Projektu, Twórca Projektu}
+=======
+	\priority{5}
+	% Aktorzy
+	\actors{Użytkownik, Twórca projektu}
+>>>>>>> b858ec49871f40a2edb9189b2ac8da0af5e6ebfd
 	% Przebieg główny
 	\begin{enumerate}
     \item Członek projektu wchodzi na stronę
@@ -457,10 +567,17 @@
     \item Wiadomość przychodzi do Twórcy projektu
 	\end{enumerate}
 	% Przebiegi alternatywne
+	\beginalternatives
+	\alternative{Alternative flow 1}{Jeżeli adres @mail nie będzie podany,
+		system wyświetli odpowiedni komunikat}
 	% Diagram
 	\diagram{uzytkownik_tworca.pdf}{1.0} % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	%\sekwencja{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
+	% Diagram sekwencji
+	%\klasa{todo.pdf}{0.6}  % drugi argument to szerokość obrazu (1.0 = szerokość strony)
 	% Pre-conditions
 	\precond{Odbiorca i twórca muszą należeć do co najmniej jednego projektu.}
 	% Post-conditions
 	\postcond{Uzyskanie odpowiednich zgłoszeń lub informacji że jest ich brak}
+	\references{\rf{20} \rf{21}}
 \end{usecase}
