@@ -18,5 +18,5 @@
 		\hline
 \end{tabular}}
 
-\newcommand{\funcreq}[3]{\headerFR{#1} \prioritytable{#2}{#3} \stepcounter{FuncReqCounter}}
-\newcommand{\nonfuncreq}[3]{\headerNFR{#1} \stepcounter{NonFuncReqCounter}}
+\newcommand{\funcreq}[3]{\headerFR{#1}\label{F\arabic{FuncReqCounter}} \prioritytable{#2}{#3} \stepcounter{FuncReqCounter}}
+\newcommand{\nonfuncreq}[3]{\headerNFR{#1}\label{NF\arabic{NonFuncReqCounter}} \stepcounter{NonFuncReqCounter}}
