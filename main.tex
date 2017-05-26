@@ -124,7 +124,46 @@ Moduł odpowiedzialny za wszelkie prace wykonywane przez Administratora Systemu.
 Moduł odpowiedzialny za szeroko rozumianą obsługę projektów. Moduł ten zawiera wszystkie operacje powiązane z tworzeniem projektów, zadań, a także zarządzania poszczególnymi elementami projektu.
 
 \chapter{Specyfikacja sprzętu i oprogramowania podstawowego}
-\todo
+Do wdrożenia aplikacji konieczne jest zapewnienie odpowiedniego środowiska. Proponowana przez nas konfiguracja zakłada oddelegowanie odpowiedzalności za utrzymanie infrastruktury do chmury Amazon Web Services. Wymieniony usługodawcs zapewnia wysoki poziom dostępności i elastyczność konfiguracji przy relatywnie niskich kosztach. Stosowane usługi to m.in.
+
+\begin{itemize}
+	\item EC2 - 
+	\item technologie użyte w interfejsie użytkownika (front-end),
+	\item technologie użyte do przechowywania danych.
+\end{itemize}
+
+\section{Środowisko sprzętowe}
+Poniżej zamieszczamy przykład środowiska sprzętowego dla wdrożenia z przyjętymi następującymi założeniami:
+\begin{itemize}
+\item Grupę użytkowników mieści się w przedziale 50-100 aktywnie wykorzystujących zasoby pracowników
+\item System jest użytkowany średnio 20 godzin na dobę
+\item Użytkownicy regularnie archiwizuja zasoby (transfer około 50GB miesięcznie)
+\item System przechowuje pewną ilość zarchiwizowanych zasobów (1 TB)
+\item Odbiorca systemu opłaca z góry połowę rocznego kosztu utrzymania infrastruktury
+\end{itemize}
+
+W takim wypadku konfiguracja sprzętowa wraz z kosztorysem przyjmuje następującą postać:
+
+\begin{table}[]
+\centering
+\caption{Środowisko sprzętowe - kosztorys miesięczny }
+\begin{tabular}{|l|l|l|l|}
+\hline
+%  http://calculator.s3.amazonaws.com/index.html#r=IAD&key=calc-8E7A0FE0-F8D1-4FF0-957B-0068FE48FEA5 
+ & Typ usługi AWS & Konfiguracja & Miesięczny koszt \\ \hline
+Serwer aplikacji 		 & EC2             & 4 CPU, 16 GiB RAM  & \$46.85                 \\ \hline
+Baza danych &              EC2            &   4 CPU, 16 GiB RAM             &          \$46.85     \\ \hline
+Archiwum zasobów &               S3           &   1 TB przestrzeni           &     \$23.56             \\ \hline
+ Transfer danych &         Inter-regional transfer  &       50 GB       &         \$1.00         \\ \hline
+ \multicolumn{3}{|l|}{Łącznie miesięcznie: } & \$118.26 \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+\section{System operacyjny}
+Proponujemy implementacje i wdrożenie systemu w oparciu o rozwiązania otwarte, w tym także system operacyjny Linux. Proponowaną przez nas dystrybucja to CentOS 7. Klientom, którym zależy na technicznym i merytorycznym wsparciu proponujemy dostarczaną przez firmę RedHat wersję systemy klasy enterprise (RHEL 7)
+
 \chapter{Specyfikacja technologii}
 Aplikacja opiera się o szereg technologii, które dzięki wzajemnej współpracy dostarczają spójny i niezawodny system. Wykorzystane technologie można podzielić na następujące grupy:
 \begin{itemize}
