@@ -1,0 +1,13 @@
+\newcounter{DatabaseCounter}
+\setcounter{DatabaseCounter}{1}
+
+\newcommand{\headerD}[1]{\subsection{#1}}
+
+\newcommand{\diagramD}[2]{\vspace{-0.5em}\subsubsection{}\noindent
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=#2\textwidth]{diagrams/#1}
+	\end{figure}
+	\FloatBarrier}
+
+\newenvironment{component}{\headerD}{\stepcounter{DatabaseCounter}}
